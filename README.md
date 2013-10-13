@@ -1,6 +1,6 @@
-# grunt-style-injector [![Build Status](https://travis-ci.org/shakyShane/grunt-style-injector.png?branch=master)](https://travis-ci.org/shakyShane/grunt-style-injector)
+# grunt-browser-sync
 
-> A live-reload alternative with support for legacy IE browsers.
+> A grunt task for the [browser-sync](https://npmjs.org/package/grunt-browser-sync)
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -8,11 +8,10 @@ This plugin requires Grunt `~0.4.1`
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins.
 
 ##About
-**Live CSS-injecting with NO page refresh**
+**Live CSS-injecting & Browser Syncing**
 
-This plugin gives you live style-injecting into all browsers. It also provides live-reloading of files that cannot be injected (php, html etc). I was inspired to build this because the popular live-reload plugin does not work with IE 7 & 8. *This one does!*
-
-It can also be used in **Ghost-Mode** where all connected broswers/devices will try to keep in sync. Ghost-Mode currently supports three options:
+This plugin can watch your files and inject CSS when they change.
+It can also keep the following in sync:
 
 **links**  - When you click a link in one browser (say, Chrome on desktop), all of the other browsers you have open will navigate to the same link.
 
@@ -24,29 +23,30 @@ text-inputs, text areas, selects, radios & checkboxes)
 ##Install
 
 ```shell
-npm install grunt-style-injector --save-dev
+npm install grunt-browser-sync --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-style-injector');
+grunt.loadNpmTasks('grunt-browser-sync');
 ```
 ##Config
 Here's an example of the simplest configuration possible. This will give you a HTML snippet to paste into your website & will you allow you to work with any server setup (such as MAMP,  WAMP or anything else). So if you are working on a Wordpress website, for example, this is the option for you.
 
 ```
-styleinjector: {
+browser_sync: {
     files: {
         src : 'assets/css/style.css'
-    },
-},
+    }
+}
 ```
-## with Connect Server
-If you want the zero-effort version, just include the `server` option and provide the base directory to your public files. Using this option does NOT require the HTML snippet as the Style Injector will inject it automatically into the pages it serves for you.
+
+## with a server
+You can use this plugin as a server too! This is the easiest option because the plugin will automatically insert the html snippet into your pages for you.
 
 ```
-styleinjector: {
+browser_sync: {
     files: {
         src : 'assets/css/style.css'
     },
@@ -60,7 +60,7 @@ styleinjector: {
 
 ##Run
 
-`grunt styleinjector`
+`grunt browser_sync`
 
 When you've used one of the configs from above, run this command from the terminal and you'll be good to go (if you are using the built-in server). If you are not using the built in server, (because your site is on PHP or something else), just grab the HTML snippet from the command line and paste it into your site just before the closing `</body` tag
 
@@ -69,7 +69,7 @@ When you've used one of the configs from above, run this command from the termin
 Here's another example config with options, each will be explained after.
 
 ```js
-styleinjector: {
+browser_sync: {
     files: {
         src : 'assets/css/style.css'
     },
@@ -84,10 +84,11 @@ styleinjector: {
 },
 ```
 ###watchTask (default: *false*)
-Style-Injector is not a replacement for regular `watch` tasks (such as compiling SASS, LESS etc), they are designed to be used together. If you intend to do this, set this option to true and be sure to call the `watch` task AFTER `styleinjector`. For example, to compile SASS and then inject the CSS into all open browsers (without a page refresh), your config for all three tasks might look something like this:
+Browser Sync is not a replacement for regular `watch` tasks (such as compiling SASS, LESS etc), they are designed to be used together. If you intend to do this, set this option to true and be sure to call the `watch` task AFTER `browser_sync`. For example, to compile SASS and then inject the CSS into all open browsers (without a page refresh), your config for all three tasks might look something like this:
 
 
 ```js
+// This shows a full config file!
 module.exports = function (grunt) {
     grunt.initConfig({
         watch: {
@@ -103,7 +104,7 @@ module.exports = function (grunt) {
                 },
             },
         },
-        styleinjector: {
+        browser_sync: {
             files: {
                 src : 'assets/css/*.css',
             },
@@ -116,10 +117,10 @@ module.exports = function (grunt) {
     // load npm tasks
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-style-injector');
+    grunt.loadNpmTasks('grunt-browser-sync');
 
     // create custom task-list
-    grunt.registerTask('default', ["styleinjector", "watch"]);
+    grunt.registerTask('default', ["browser_sync", "watch"]);
 };
 ```
 
@@ -128,19 +129,16 @@ By default, the task will inform you when a file has been changed & when browser
 
 ```js
 grunt.initConfig({
-    styleinjector: {
+    browser_sync: {
         files: {
             src : 'app/assets/css/*.css',
         },
     },
 });
-
-// Needed because the CSS file url will probably look like this in the DOM.
-// <link rel="stylesheet" href="/assets/css/style.css"/>
 ```
 
 ###host (default: *null*)
-Style-Injector will attempt to figure out the correct external IP to use on your network. Ocassionally though, it may select
+Browser Sync will attempt to figure out the correct external IP to use on your network. Occasionally though, it may select
 one that cannot be accessed on any other devices (just the machine you are developing on). If this happens, and you know exactly
 which IP to use on your network, you can plug it in here.
 
@@ -148,7 +146,7 @@ For example:
 
 ```js
 grunt.initConfig({
-    styleinjector: {
+    browser_sync: {
         files: {
             src : 'app/assets/css/*.css',
         },
@@ -159,7 +157,7 @@ grunt.initConfig({
 });
 ```
 > A quick word on hosts...
-The power of Style-Injector comes when you have multiple devices/browsers connected. To do this, you use your networks IP instead of `localhost`. For example, you may have a php/node/mamp server running at `localhost:8000`. Swap out the localhost part for something like `192.168.0.1` (find yours by running `ifconfig` on Mac, `ipconfig` on Windows) and you can connect to **192.168.0.1:8000**. Now, with Style-Injector running, you can have as many browsers/devices connected and they will all live-update when you change a file.
+The power of Browser Sync comes when you have multiple devices/browsers connected. To do this, you use your networks IP instead of `localhost`. For example, you may have a php/node/mamp server running at `localhost:8000`. Swap out the localhost part for something like `192.168.0.1` (find yours by running `ifconfig` on Mac, `ipconfig` on Windows) and you can connect to **192.168.0.1:8000**. Now, with Browser Sync running, you can have as many browsers/devices connected and they will all live-update when you change a file.
 
 ###ghostMode (default: *false*) **Experimental**
 There are currently three options for **ghostMode** `scroll`, `links` & `forms`
@@ -171,7 +169,7 @@ on `<a>` elements. It's designed to just make it easy to view multiple pages in 
 
 ```js
 grunt.initConfig({
-    styleinjector: {
+    browser_sync: {
         files: {
             src : 'app/assets/css/*.css',
         },
@@ -191,7 +189,7 @@ Using the `server` option negates the need for the HTML snippet as it will be in
 
 ```js
 grunt.initConfig({
-    styleinjector: {
+    browser_sync: {
         files: {
             src : 'app/assets/css/*.css',
         },
@@ -206,11 +204,11 @@ grunt.initConfig({
 ```
 
 ##Live Reload
-Style-Injector will, as the name implies, inject CSS into all connected browsers without reloading the page. It even works on VMs running IE 7 & 8! But that's not all it does. It can also live-inject jpg & png files too, as well as perform a hard refresh for JS, PHP, HTML files etc. For example:
+Browser Sync injects CSS into all connected browsers without reloading the page & it even works on VMs running IE 7 & 8! But that's not all it does. It can also live-inject jpg & png files too, as well as perform a hard refresh for JS, PHP, HTML files etc. For example:
 
 ```js
 grunt.initConfig({
-    styleinjector: {
+    browser_sync: {
         files: {
             src : [
                 'assets/css/*.css',
@@ -232,9 +230,10 @@ Please contact me (raise an issue) if you have any problems getting up and runni
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-0.1.0 - initial release
-0.1.1 - Bug fixes release
-0.1.3 - Added initial implentation of Ghost-mode (link)
-0.1.4 - refined ghost-mode and added scroll
-0.1.6 - Added Built-in server with middleware for injecting snippet
+0.2.0 - rename project to grunt-browser-sync
 0.1.7 - Added 'open' for automatically opening browser when 'server' option is used.
+0.1.6 - Added Built-in server with middleware for injecting snippet
+0.1.4 - refined ghost-mode and added scroll
+0.1.3 - Added initial implentation of Ghost-mode (link)
+0.1.1 - Bug fixes release
+0.1.0 - initial release
