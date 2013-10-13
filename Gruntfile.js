@@ -28,7 +28,6 @@ module.exports = function (grunt) {
                 dest: "tasks/lib/style-injector-client.min.js"
             }
         },
-        // Before generating any new files, remove any previously-created files.
         clean: {
             tests: ['tmp']
         },
@@ -41,7 +40,7 @@ module.exports = function (grunt) {
                 tasks: ["jasmine_node"]
             }
         },
-        browsersync: {
+        browser_sync: {
             default_options: {
                 files: {
                     src : [
@@ -68,22 +67,8 @@ module.exports = function (grunt) {
                 singleRun: true
             }
         },
-        // Unit tests.
         nodeunit: {
             tests: ['test/*_test.js']
-        },
-        jasmine_node: {
-//            specNameMatcher: "Spec", // load only specs containing specNameMatcher
-            specNameMatcher: "Spec", // load only specs containing specNameMatcher
-            projectRoot: "test/new-server",
-            requirejs: false,
-            forceExit: true,
-            jUnit: {
-                report: false,
-                savePath : "./build/reports/jasmine/",
-                useDotNotation: true,
-                consolidate: true
-            }
         }
     });
 
