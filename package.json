@@ -1,7 +1,7 @@
 {
   "name": "grunt-browser-sync",
   "description": "Live CSS reload & Browser Syncing",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "homepage": "https://github.com/shakyshane/grunt-browser-sync",
   "author": {
     "name": "Shane Osbourne"
