@@ -17,7 +17,7 @@ module.exports = function (grunt) {
         // fail straight away if there are no files to watch!
         //noinspection JSUnresolvedVariable
         if (!this.filesSrc.length) {
-            grunt.fail.fatal("StyleInjector could not find any files to watch! (check your config!)");
+            grunt.fail.fatal("Browser Sync could not find any files to watch! (check your config!)");
         }
 
         var options = this.options({
