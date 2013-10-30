@@ -41,9 +41,11 @@ browser_sync: {
     }
 }
 ```
+##Important: Using browser-sync + grunt watch
+If you are using both of these, scroll down to the **watchTask** option below to see how to config them to be used together!
 
 ## with a server
-You can use this plugin as a server too! This is the easiest option because the plugin will automatically insert the html snippet into your pages for you.
+You can use this plugin as a server too (for static HTML, JS & CSS)! This is the easiest option because the plugin will automatically insert the html snippet into your pages for you.
 
 ```
 browser_sync: {
@@ -57,6 +59,7 @@ browser_sync: {
     }
 },
 ```
+
 
 ##Run
 
@@ -197,6 +200,25 @@ grunt.initConfig({
             host : "192.168.0.1",
 			server: {
         		baseDir: "app"
+        	}
+        },
+    },
+});
+
+```
+###server.index (default: *false*)
+If you are using the server feature & for some reason your index page is NOT 'index.html', you can specify which file to load instead.
+```js
+grunt.initConfig({
+    browser_sync: {
+        files: {
+            src : 'app/assets/css/*.css',
+        },
+        options: {
+            host : "192.168.0.1",
+			server: {
+        		baseDir: "app",
+        		index: "index.htm" - Notice the use of htm
         	}
         },
     },

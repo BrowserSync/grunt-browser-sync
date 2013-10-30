@@ -80,6 +80,6 @@ module.exports = function (grunt) {
     grunt.registerTask('test', ['karma', 'jasmine_node']);
 
     // By default, lint and run all tests.
-    grunt.registerTask('default', ["browser-sync"]);
+    grunt.registerTask('default', ["browser_sync"]);
 
 };
