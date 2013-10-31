@@ -38,6 +38,10 @@ module.exports = function (grunt) {
                     "tasks/lib/**/*.js"
                 ],
                 tasks: ["jasmine_node"]
+            },
+            sass: {
+                files: "test/fixtures/sass/*.scss",
+                tasks: ['sass']
             }
         },
         browser_sync: {
@@ -48,7 +52,7 @@ module.exports = function (grunt) {
                     ]
                 },
                 options: {
-                    watchTask: false,
+                    watchTask: true,
                     debugInfo: true,
                     ghostMode: {
                         scroll: true,
@@ -58,6 +62,13 @@ module.exports = function (grunt) {
                     server: {
                         baseDir: "test/fixtures"
                     }
+                }
+            }
+        },
+        sass: {
+            test: {
+                files: {
+                    "test/fixtures/css/style.css" : "test/fixtures/sass/style.scss"
                 }
             }
         },
@@ -74,6 +85,8 @@ module.exports = function (grunt) {
 
     // Actually load this plugin's task(s).
     grunt.loadTasks('tasks');
+    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Whenever the "test" task is run, first clean the "tmp" dir, then run this
     // plugin's task(s), then test the result.
@@ -81,5 +94,8 @@ module.exports = function (grunt) {
 
     // By default, lint and run all tests.
     grunt.registerTask('default', ["browser_sync"]);
+
+
+    grunt.registerTask('dev-watch', ["browser_sync", "watch:sass"]);
 
 };
