@@ -32,8 +32,7 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-browser-sync');
 ```
 ##Config
-Here's an example of the simplest configuration possible. This will give you a HTML snippet to paste into your website & will you allow you to work with any server setup (such as MAMP,  WAMP or anything else). So if you are working on a Wordpress website, for example, this is the option for you.
-
+Here's an example of the simplest configuration possible. This will give you a HTML snippet to paste into the footer of your website to enable browser-sync.
 ```
 browser_sync: {
     files: {
@@ -44,8 +43,8 @@ browser_sync: {
 ##Important: Using browser-sync + grunt watch
 If you are using both of these, scroll down to the **watchTask** option below to see how to config them to be used together!
 
-## with a server
-You can use this plugin as a server too (for static HTML, JS & CSS)! This is the easiest option because the plugin will automatically insert the html snippet into your pages for you.
+## + static file server
+You can use this plugin as a server too (for static HTML, JS & CSS). When using the Server option, the snippets are automatically injected for you.
 
 ```
 browser_sync: {
@@ -60,12 +59,46 @@ browser_sync: {
 },
 ```
 
+## + your own php/mamp/wamp/rails server (proxy)
+If you already have a local server setup (with your vhosts etc), just tell browser-sync all about it & it will do the rest for you.
+
+```
+browser_sync: {
+    files: {
+        src : 'assets/css/style.css'
+    },
+    options: {
+    	proxy: {
+    		// Your existing vhost setup
+    		host: "local.dev"
+    	}
+    }
+},
+```
+Using the **proxy** option will give you an IP address that you can access from any device/computer on your network automagically.
+
+The Browser-sync proxy will default to port 80, but if you know it's different for your project, then you can pass it as an option.
+
+```
+browser_sync: {
+    files: {
+        src : 'assets/css/style.css'
+    },
+    options: {
+    	proxy: {
+    		host: "local.dev",
+    		// With a specific port
+    		port: 8001
+    	}
+    }
+},
+```
 
 ##Run
 
 `grunt browser_sync`
 
-When you've used one of the configs from above, run this command from the terminal and you'll be good to go (if you are using the built-in server). If you are not using the built in server, (because your site is on PHP or something else), just grab the HTML snippet from the command line and paste it into your site just before the closing `</body` tag
+When you've used one of the configs from above, run this command from the terminal and you'll be good to go (if you are using the built-in server). If you are not using the built in server or the proxy, (because your site is on PHP or something else), just grab the HTML snippet from the command line and paste it into your site just before the closing `</body` tag
 
 ##Options
 

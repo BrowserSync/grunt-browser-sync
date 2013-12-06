@@ -45,10 +45,10 @@ module.exports = function (grunt) {
             }
         },
         browser_sync: {
-            default_options: {
+            server: {
                 files: {
                     src : [
-                        'test/**'
+                        'test/fixtures/css/style.css'
                     ]
                 },
                 options: {
@@ -61,6 +61,26 @@ module.exports = function (grunt) {
                     },
                     server: {
                         baseDir: "test/fixtures"
+                    }
+                }
+            },
+            proxy: {
+                files: {
+                    src : [
+                        'test/fixtures/css/style.css'
+                    ]
+                },
+                options: {
+                    watchTask: true,
+                    debugInfo: true,
+                    ghostMode: {
+                        scroll: true,
+                        links: true,
+                        forms: true
+                    },
+                    proxy: {
+                        host: "0.0.0.0",
+                        port: 8000
                     }
                 }
             }
@@ -95,7 +115,8 @@ module.exports = function (grunt) {
     // By default, lint and run all tests.
     grunt.registerTask('default', ["browser_sync"]);
 
-
     grunt.registerTask('dev-watch', ["browser_sync", "watch:sass"]);
+    grunt.registerTask('server', ["browser_sync:server", "watch:sass"]);
+    grunt.registerTask('proxy', ["browser_sync:proxy", "watch:sass"]);
 
 };
