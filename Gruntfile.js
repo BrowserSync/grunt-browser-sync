@@ -48,7 +48,8 @@ module.exports = function (grunt) {
             server: {
                 files: {
                     src : [
-                        'test/fixtures/css/style.css'
+                        'test/fixtures/css/style.css',
+                        'test/fixtures/*.html'
                     ]
                 },
                 options: {
