@@ -31,7 +31,8 @@ module.exports = function (grunt) {
             injectFileTypes: ['css', 'png', 'jpg', 'svg', 'gif'],
             host: null,
             server: false,
-            open: true
+            open: true,
+            notify: true
         });
 
         var methods = require('browser-sync');
