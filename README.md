@@ -20,6 +20,12 @@ It can also keep the following in sync:
 **forms**  - When you fill out a form, all connected browsers will populate their forms with what you type in real-time. (currently working for
 text-inputs, text areas, selects, radios & checkboxes)
 
+##Support
+If you've found Browser-sync useful and would like to contribute to its continued development & support, please feel free to send a donation of any size - it would be greatly appreciated!
+
+[![Support via Gittip](https://rawgithub.com/chris---/Donation-Badges/master/gittip.jpeg)](https://www.gittip.com/shakyshane)
+[![Support via PayPal](https://rawgithub.com/chris---/Donation-Badges/master/paypal.jpeg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=shakyshane%40gmail%2ecom&lc=US&item_name=browser%2dsync)
+
 ##Install
 
 ```shell
