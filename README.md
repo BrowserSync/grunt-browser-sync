@@ -1,6 +1,6 @@
 # grunt-browser-sync
 
-> A grunt task for the [browser-sync](https://github.com/shakyShane/browser-sync) module.
+> A grunt task for the [browser-sync](https://github.com/shakyShane/browser-sync) module. [![NPM version](https://badge.fury.io/js/grunt-browser-sync.png)](http://badge.fury.io/js/grunt-browser-sync)
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
