@@ -10,7 +10,7 @@
 
 module.exports = function (grunt) {
 
-    grunt.registerMultiTask('browser_sync', 'Keep your browsers in sync', function () {
+    grunt.registerMultiTask("browser_sync", "Keep your browsers in sync", function () {
 
         var done = this.async();
 
@@ -27,17 +27,17 @@ module.exports = function (grunt) {
             },
             debugInfo: true,
             background: false,
-            reloadFileTypes: ['php', 'html', 'js', 'erb'],
-            injectFileTypes: ['css', 'png', 'jpg', 'svg', 'gif'],
+            reloadFileTypes: ["php", "html", "js", "erb"],
+            injectFileTypes: ["css", "png", "jpg", "svg", "gif"],
             host: null,
             server: false,
             open: true,
             notify: true
         });
 
-        var methods = require('browser-sync');
+        var browserSync = require("browser-sync");
 
-        methods.setup.kickoff(this.filesSrc, options);
+        browserSync.setup.kickoff(this.filesSrc, options);
 
         //noinspection JSUnresolvedVariable
         if (options.watchTask || options.background) {

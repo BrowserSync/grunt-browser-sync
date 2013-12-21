@@ -201,6 +201,25 @@ grunt.initConfig({
 > A quick word on hosts...
 The power of Browser Sync comes when you have multiple devices/browsers connected. To do this, you use your networks IP instead of `localhost`. For example, you may have a php/node/mamp server running at `localhost:8000`. Swap out the localhost part for something like `192.168.0.1` (find yours by running `ifconfig` on Mac, `ipconfig` on Windows) and you can connect to **192.168.0.1:8000**. Now, with Browser Sync running, you can have as many browsers/devices connected and they will all live-update when you change a file.
 
+###ports (default: null)
+Browser-sync will detect up to 3 available ports to use within a fixed range. You can override this if you need to by supplying min & max values.
+
+```js
+grunt.initConfig({
+    browser_sync: {
+        files: {
+            src : 'app/assets/css/*.css',
+        },
+        options: {
+            ports: {
+                min: 6000,
+                max: 6100,
+            }
+        },
+    },
+});
+```
+
 ###ghostMode (default: *false*) **Experimental**
 There are currently three options for **ghostMode** `scroll`, `links` & `forms`
 

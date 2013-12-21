@@ -62,6 +62,10 @@ module.exports = function (grunt) {
                     },
                     server: {
                         baseDir: "test/fixtures"
+                    },
+                    ports: {
+                        min: 2000,
+                        max: 2100
                     }
                 }
             },
@@ -116,7 +120,7 @@ module.exports = function (grunt) {
     // By default, lint and run all tests.
     grunt.registerTask('default', ["browser_sync"]);
 
-    grunt.registerTask('dev-watch', ["browser_sync", "watch:sass"]);
+    grunt.registerTask('dev-watch', ["browser_sync:server", "watch:sass"]);
     grunt.registerTask('server', ["browser_sync:server", "watch:sass"]);
     grunt.registerTask('proxy', ["browser_sync:proxy", "watch:sass"]);
 
