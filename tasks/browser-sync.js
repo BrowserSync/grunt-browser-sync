@@ -38,9 +38,14 @@ module.exports = function (grunt) {
             notify: true
         });
 
-        var browserSync = require("browser-sync");
+        var browserSync  = require("browser-sync");
+        var filePatterns = [];
+        
+        if (this.data.files && this.data.files.src) {
+            filePatterns = this.data.files.src;
+        }
 
-        browserSync.setup.kickoff(this.filesSrc, options);
+        browserSync.setup.kickoff(filePatterns, options);
 
         //noinspection JSUnresolvedVariable
         if (options.watchTask || options.background) {
