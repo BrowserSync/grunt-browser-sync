@@ -31,6 +31,16 @@ module.exports = function (grunt) {
         clean: {
             tests: ['tmp']
         },
+        // The actual grunt server settings
+        connect: {
+            server: {
+                options: {
+                    hostname: "127.0.0.1",
+                    port: 9001,
+                    base: "test/fixtures"
+                }
+            }
+        },
         watch: {
             server_tests: {
                 files: [
@@ -41,7 +51,19 @@ module.exports = function (grunt) {
             },
             sass: {
                 files: "test/fixtures/sass/*.scss",
-                tasks: ['sass']
+                tasks: ['sass'],
+                spawn: false
+            }
+        },
+        concurrent: {
+            dev: {
+                tasks: [
+                    'watch',
+                    'browser_sync'
+                ],
+                options: {
+                    logConcurrentOutput: true
+                }
             }
         },
         browser_sync: {
@@ -53,7 +75,6 @@ module.exports = function (grunt) {
                     ]
                 },
                 options: {
-                    watchTask: true,
                     debugInfo: true,
                     ghostMode: {
                         scroll: true,
@@ -76,7 +97,7 @@ module.exports = function (grunt) {
                     ]
                 },
                 options: {
-                    watchTask: true,
+                    watchTask: false,
                     debugInfo: true,
                     ghostMode: {
                         scroll: true,
@@ -84,8 +105,8 @@ module.exports = function (grunt) {
                         forms: true
                     },
                     proxy: {
-                        host: "0.0.0.0",
-                        port: 8000
+                        host: "127.0.0.1",
+                        port: 9001
                     }
                 }
             }
@@ -112,6 +133,8 @@ module.exports = function (grunt) {
     grunt.loadTasks('tasks');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-concurrent');
 
     // Whenever the "test" task is run, first clean the "tmp" dir, then run this
     // plugin's task(s), then test the result.
@@ -124,4 +147,5 @@ module.exports = function (grunt) {
     grunt.registerTask('server', ["browser_sync:server", "watch:sass"]);
     grunt.registerTask('proxy', ["browser_sync:proxy", "watch:sass"]);
 
+    grunt.registerTask('server-proxy', ["connect", "browser_sync:proxy"]);
 };
