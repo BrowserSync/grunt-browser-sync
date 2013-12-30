@@ -46,6 +46,9 @@ browser_sync: {
     }
 }
 ```
+
+Here's a [full list of available options.](https://github.com/shakyShane/browser-sync/wiki/Working-with-a-Config-File)
+
 ##Important: Using browser-sync + grunt watch
 If you are using both of these, scroll down to the **watchTask** option below to see how to config them to be used together!
 

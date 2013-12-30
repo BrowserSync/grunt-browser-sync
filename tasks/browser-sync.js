@@ -28,6 +28,7 @@ module.exports = function (grunt) {
             host: null,
             ghostMode: {
                 clickedLinks: false,
+                clicks: true,
                 links: true,
                 forms: true,
                 scroll: true
@@ -40,7 +41,7 @@ module.exports = function (grunt) {
 
         var browserSync  = require("browser-sync");
         var filePatterns = [];
-        
+
         if (this.data.files && this.data.files.src) {
             filePatterns = this.data.files.src;
         }
