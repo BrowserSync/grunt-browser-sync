@@ -8,23 +8,9 @@ This plugin requires Grunt `~0.4.1`
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins.
 
 ##About
-**Live CSS-injecting & Browser Syncing**
 
-This plugin can watch your files and inject CSS when they change.
-It can also keep the following in sync:
+For a full list of features, please visit [https://github.com/shakyShane/browser-sync](https://github.com/shakyShane/browser-sync)
 
-**links**  - When you click a link in one browser (say, Chrome on desktop), all of the other browsers you have open will navigate to the same link.
-
-**scroll** - When you scroll a website in one browser, all the others will follow suit. (very useful when developing with multiple monitors/devices )
-
-**forms**  - When you fill out a form, all connected browsers will populate their forms with what you type in real-time. (currently working for
-text-inputs, text areas, selects, radios & checkboxes)
-
-##Support
-If you've found Browser-sync useful and would like to contribute to its continued development & support, please feel free to send a donation of any size - it would be greatly appreciated!
-
-[![Support via Gittip](https://rawgithub.com/chris---/Donation-Badges/master/gittip.jpeg)](https://www.gittip.com/shakyshane)
-[![Support via PayPal](https://rawgithub.com/chris---/Donation-Badges/master/paypal.jpeg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=shakyshane%40gmail%2ecom&lc=US&item_name=browser%2dsync)
 
 ##Install
 
@@ -37,6 +23,13 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 ```js
 grunt.loadNpmTasks('grunt-browser-sync');
 ```
+
+##Support
+If you've found Browser-sync useful and would like to contribute to its continued development & support, please feel free to send a donation of any size - it would be greatly appreciated!
+
+[![Support via Gittip](https://rawgithub.com/chris---/Donation-Badges/master/gittip.jpeg)](https://www.gittip.com/shakyshane)
+[![Support via PayPal](https://rawgithub.com/chris---/Donation-Badges/master/paypal.jpeg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=shakyshane%40gmail%2ecom&lc=US&item_name=browser%2dsync)
+
 ##Config
 Here's an example of the simplest configuration possible. This will give you a HTML snippet to paste into the footer of your website to enable browser-sync.
 ```
@@ -223,9 +216,9 @@ grunt.initConfig({
 });
 ```
 
-###ghostMode (default: *false*) **Experimental**
-There are currently three options for **ghostMode** `scroll`, `links` & `forms`
-
+###ghostMode (default: *true*)
+There are currently 4 options for **ghostMode** `clicks`, `scroll`, `links` & `forms`
+- Clicks. *alpha* All clicks will be mirrored across devices.
 - Scroll. Enable this and your connected browsers will attempt to keep in sync
 - Links. Enable this and your connected browsers will follow each other around. (note: this could be problematic if you already have click events
 on `<a>` elements. It's designed to just make it easy to view multiple pages in the same site and have all browsers keep in sync while in development.
@@ -240,6 +233,7 @@ grunt.initConfig({
         options: {
             host : "192.168.0.1",
             ghostMode: {
+                clicks: true,
                 scroll: true,
                 links: true,
                 forms: true
