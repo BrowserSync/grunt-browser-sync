@@ -42,6 +42,10 @@ browser_sync: {
 
 Here's a [full list of available options.](https://github.com/shakyShane/browser-sync/wiki/Working-with-a-Config-File)
 
+##bsFiles - explained
+
+You may be wondering why browser-sync accepts a `bsFiles` property (see the examples below)… It's because browser-sync has it's own file-watching functionality built in & you can skip grunt doing file look-ups by changing the regular **files** property to **bsFiles**. (this also allows browser-sync to respond to newly added files, like grunt-contrib-watch does)
+
 ##Important: Using browser-sync + grunt watch
 If you are using both of these, scroll down to the **watchTask** option below to see how to config them to be used together!
 
@@ -108,6 +112,7 @@ browser_sync: {
 `grunt browser_sync`
 
 When you've used one of the configs from above, run this command from the terminal and you'll be good to go (if you are using the built-in server). If you are not using the built in server or the proxy, (because your site is on PHP or something else), just grab the HTML snippet from the command line and paste it into your site just before the closing `</body` tag
+
 
 ##Options
 
