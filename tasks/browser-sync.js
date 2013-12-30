@@ -14,12 +14,6 @@ module.exports = function (grunt) {
 
         var done = this.async();
 
-        // fail straight away if there are no files to watch!
-        //noinspection JSUnresolvedVariable
-        if (!this.filesSrc.length) {
-            grunt.fail.fatal("Browser Sync could not find any files to watch! (check your config!)");
-        }
-
         var options = this.options({
             debugInfo: true,
             background: false,
@@ -39,9 +33,33 @@ module.exports = function (grunt) {
             notify: true
         });
 
+        var patterns;
+
+        if (this.data && this.data.bsFiles && this.data.bsFiles.src) {
+            patterns = this.data.bsFiles.src;
+            if (typeof patterns === "string") {
+                patterns = [patterns];
+            }
+        }
+
+        if (!patterns) {
+            if (this.data.src) {
+                patterns = this.data.src;
+                if (typeof this.data.src === "string") {
+                    patterns = [this.data.src];
+                }
+            }
+        }
+
+        if (!patterns) {
+            if (this.filesSrc.length) {
+                patterns = this.filesSrc;
+            }
+        }
+
         var browserSync  = require("browser-sync");
 
-        browserSync.setup.kickoff(this.filesSrc, options);
+        browserSync.setup.kickoff(patterns || [], options);
 
         //noinspection JSUnresolvedVariable
         if (options.watchTask || options.background) {

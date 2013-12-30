@@ -68,7 +68,7 @@ module.exports = function (grunt) {
         },
         browser_sync: {
             server: {
-                files: {
+                bsFiles: {
                     src : [
                         'test/fixtures/css/*.css',
                         'test/fixtures/*.html'
