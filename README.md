@@ -50,13 +50,15 @@ You can use this plugin as a server too (for static HTML, JS & CSS). When using 
 
 ```
 browser_sync: {
-    files: {
-        src : 'assets/css/style.css'
-    },
-    options: {
-    	server: {
-    		baseDir: "app"
-    	}
+    dev: {
+        bsFiles: {
+            src : 'assets/css/style.css'
+        },
+        options: {
+            server: {
+                baseDir: "app"
+            }
+        }
     }
 },
 ```
@@ -66,14 +68,16 @@ If you already have a local server setup (with your vhosts etc), just tell brows
 
 ```
 browser_sync: {
-    files: {
-        src : 'assets/css/style.css'
-    },
-    options: {
-    	proxy: {
-    		// Your existing vhost setup
-    		host: "local.dev"
-    	}
+    dev: {
+        bsFiles: {
+            src : 'assets/css/style.css'
+        },
+        options: {
+            proxy: {
+                // Your existing vhost setup
+                host: "local.dev"
+            }
+        }
     }
 },
 ```
@@ -83,15 +87,18 @@ The Browser-sync proxy will default to port 80, but if you know it's different f
 
 ```
 browser_sync: {
-    files: {
-        src : 'assets/css/style.css'
-    },
-    options: {
-    	proxy: {
-    		host: "local.dev",
-    		// With a specific port
-    		port: 8001
-    	}
+    dev: {
+        bsFiles: {
+            src : 'assets/css/style.css'
+        },
+        options: {
+            proxy: {
+                // Your existing vhost setup
+                host: "local.dev",
+                // With a specific port
+                port: 8001
+            }
+        }
     }
 },
 ```
@@ -108,17 +115,19 @@ Here's another example config with options, each will be explained after.
 
 ```js
 browser_sync: {
-    files: {
-        src : 'assets/css/style.css'
-    },
-    options: {
-        watchTask: false,
-        debugInfo: true,
-        host: "192.168.0.7",
-        server: {
-        	baseDir: "app"
+    dev: {
+        bsFiles: {
+            src : 'assets/css/style.css'
+        },
+        options: {
+            watchTask: false,
+            debugInfo: true,
+            host: "192.168.0.7",
+            server: {
+                baseDir: "app"
+            }
         }
-    },
+    }
 },
 ```
 ###watchTask (default: *false*)
@@ -138,18 +147,20 @@ module.exports = function (grunt) {
                 options: {
                     sassDir: 'assets/scss',
                     cssDir: 'assets/css',
-                    outputStyle: 'compressed',
-                },
-            },
+                    outputStyle: 'compressed'
+                }
+            }
         },
         browser_sync: {
-            files: {
-                src : 'assets/css/*.css',
-            },
-            options: {
-                watchTask: true,
-            },
-        },
+            dev: {
+                bsFiles: {
+                    src : 'assets/css/*.css'
+                },
+                options: {
+                    watchTask: true
+                }
+            }
+        }
     });
 
     // load npm tasks
@@ -162,19 +173,6 @@ module.exports = function (grunt) {
 };
 ```
 
-###debugInfo (default: *true*)
-By default, the task will inform you when a file has been changed & when browsers are connected. This can sometimes cause a lot of output to the console and if you don't want that, set this option to false.
-
-```js
-grunt.initConfig({
-    browser_sync: {
-        files: {
-            src : 'app/assets/css/*.css',
-        },
-    },
-});
-```
-
 ###host (default: *null*)
 Browser Sync will attempt to figure out the correct external IP to use on your network. Occasionally though, it may select
 one that cannot be accessed on any other devices (just the machine you are developing on). If this happens, and you know exactly
@@ -185,13 +183,15 @@ For example:
 ```js
 grunt.initConfig({
     browser_sync: {
-        files: {
-            src : 'app/assets/css/*.css',
-        },
-        options: {
-            host : "192.168.0.1"
-        },
-    },
+        dev: {
+            bsFiles: {
+                src : 'app/assets/css/*.css'
+            },
+            options: {
+                host : "192.168.0.1"
+            }
+        }
+    }
 });
 ```
 > A quick word on hosts...
@@ -203,16 +203,18 @@ Browser-sync will detect up to 3 available ports to use within a fixed range. Yo
 ```js
 grunt.initConfig({
     browser_sync: {
-        files: {
-            src : 'app/assets/css/*.css',
-        },
-        options: {
-            ports: {
-                min: 6000,
-                max: 6100,
+        dev: {
+            bsFiles: {
+                src : 'app/assets/css/*.css'
+            },
+            options: {
+                ports: {
+                    min: 6000,
+                    max: 6100
+                }
             }
-        },
-    },
+        }
+    }
 });
 ```
 
@@ -227,20 +229,23 @@ on `<a>` elements. It's designed to just make it easy to view multiple pages in 
 ```js
 grunt.initConfig({
     browser_sync: {
-        files: {
-            src : 'app/assets/css/*.css',
-        },
-        options: {
-            host : "192.168.0.1",
-            ghostMode: {
-                clicks: true,
-                scroll: true,
-                links: true,
-                forms: true
+        dev: {
+            bsFiles: {
+                src : 'app/assets/css/*.css'
+            },
+            options: {
+                host : "192.168.0.1",
+                ghostMode: {
+                    clicks: true,
+                    scroll: true,
+                    links: true,
+                    forms: true
+                }
             }
-        },
-    },
+        }
+    }
 });
+
 ```
 ###server (default: *false*)
 Using the `server` option negates the need for the HTML snippet as it will be injected automatically (no browser plugins needed!). Just provide the base directory where you want to serve your files from and you'll be good to go!.
@@ -248,16 +253,18 @@ Using the `server` option negates the need for the HTML snippet as it will be in
 ```js
 grunt.initConfig({
     browser_sync: {
-        files: {
-            src : 'app/assets/css/*.css',
-        },
-        options: {
-            host : "192.168.0.1",
-			server: {
-        		baseDir: "app"
-        	}
-        },
-    },
+        dev: {
+            bsFiles: {
+                src : 'app/assets/css/*.css'
+            },
+            options: {
+                host : "192.168.0.1",
+                server: {
+                    baseDir: "app"
+                }
+            }
+        }
+    }
 });
 
 ```
@@ -266,17 +273,19 @@ If you are using the server feature & for some reason your index page is NOT 'in
 ```js
 grunt.initConfig({
     browser_sync: {
-        files: {
-            src : 'app/assets/css/*.css',
-        },
-        options: {
-            host : "192.168.0.1",
-			server: {
-        		baseDir: "app",
-        		index: "index.htm" - Notice the use of htm
-        	}
-        },
-    },
+        dev: {
+            bsFiles: {
+                src : 'app/assets/css/*.css'
+            },
+            options: {
+                host : "192.168.0.1",
+                server: {
+                    baseDir: "app",
+                    index: "index.htm"
+                }
+            }
+        }
+    }
 });
 ```
 
@@ -286,17 +295,19 @@ Browser Sync injects CSS into all connected browsers without reloading the page 
 ```js
 grunt.initConfig({
     browser_sync: {
-        files: {
-            src : [
-                'assets/css/*.css',
-                'assets/img/**/*.jpg',
-                'assets/img/**/*.png',
-                'assets/js/**/*.js',
-                '**/*.php',
-                '**/*.html',
-            ],
-        },
-    },
+        dev: {
+            bsFiles: {
+                src : [
+                    'assets/css/*.css',
+                    'assets/img/**/*.jpg',
+                    'assets/img/**/*.png',
+                    'assets/js/**/*.js',
+                    '**/*.php',
+                    '**/*.html'
+                ]
+            }
+        }
+    }
 });
 ```
 
