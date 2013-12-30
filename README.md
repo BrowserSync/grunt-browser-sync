@@ -42,7 +42,7 @@ browser_sync: {
 
 Here's a [full list of available options.](https://github.com/shakyShane/browser-sync/wiki/Working-with-a-Config-File)
 
-##bsFiles - explained
+##bsFiles - explained (version > 0.4.3 required)
 
 You may be wondering why browser-sync accepts a `bsFiles` property (see the examples below)… It's because browser-sync has it's own file-watching functionality built in & you can skip grunt doing file look-ups by changing the regular **files** property to **bsFiles**. (this also allows browser-sync to respond to newly added files, like grunt-contrib-watch does)
 
