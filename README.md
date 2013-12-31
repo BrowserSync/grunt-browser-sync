@@ -24,14 +24,9 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-browser-sync');
 ```
 
-##Support
-If you've found Browser-sync useful and would like to contribute to its continued development & support, please feel free to send a donation of any size - it would be greatly appreciated!
-
-[![Support via Gittip](https://rawgithub.com/chris---/Donation-Badges/master/gittip.jpeg)](https://www.gittip.com/shakyshane)
-[![Support via PayPal](https://rawgithub.com/chris---/Donation-Badges/master/paypal.jpeg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=shakyshane%40gmail%2ecom&lc=US&item_name=browser%2dsync)
-
 ##Config
 Here's an example of the simplest configuration possible. This will give you a HTML snippet to paste into the footer of your website to enable browser-sync.
+
 ```
 browser_sync: {
     files: {
@@ -42,9 +37,10 @@ browser_sync: {
 
 Here's a [full list of available options.](https://github.com/shakyShane/browser-sync/wiki/Working-with-a-Config-File)
 
-##bsFiles - explained (version > 0.4.3 required)
-
-You may be wondering why browser-sync accepts a `bsFiles` property (see the examples below)… It's because browser-sync has it's own file-watching functionality built in & you can skip grunt doing file look-ups by changing the regular **files** property to **bsFiles**. (this also allows browser-sync to respond to newly added files, like grunt-contrib-watch does)
+###Screencasts ( < 3 min each )
+1. [Browser-Sync + Jekyll + SASS Part: 1 - Example](http://quick.as/3v0sop3)
+2. [Browser-Sync + Jekyll + SASS Part: 2 - Configuration](http://quick.as/5g9c1jx)
+3. [Browser-Sync + Jekyll + SASS Part: 3 - Alternative Workflow](http://quick.as/ogrclvd)
 
 ##Important: Using browser-sync + grunt watch
 If you are using both of these, scroll down to the **watchTask** option below to see how to config them to be used together!
@@ -106,6 +102,10 @@ browser_sync: {
     }
 },
 ```
+
+##bsFiles - explained (version > 0.4.3 required)
+
+You may be wondering why browser-sync accepts a `bsFiles` property (see the examples below)… It's because browser-sync has it's own file-watching functionality built in & you can skip grunt doing file look-ups by changing the regular **files** property to **bsFiles**. (this also allows browser-sync to respond to newly added files, like grunt-contrib-watch does)
 
 ##Run
 
@@ -316,8 +316,12 @@ grunt.initConfig({
 });
 ```
 
-###Support
-Please contact me (raise an issue) if you have any problems getting up and running with this. I'll be happy to help :)
+
+##Support
+If you've found Browser-sync useful and would like to contribute to its continued development & support, please feel free to send a donation of any size - it would be greatly appreciated!
+
+[![Support via Gittip](https://rawgithub.com/chris---/Donation-Badges/master/gittip.jpeg)](https://www.gittip.com/shakyshane)
+[![Support via PayPal](https://rawgithub.com/chris---/Donation-Badges/master/paypal.jpeg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=shakyshane%40gmail%2ecom&lc=US&item_name=browser%2dsync)
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
