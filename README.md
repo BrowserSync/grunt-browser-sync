@@ -38,9 +38,16 @@ browser_sync: {
 Here's a [full list of available options.](https://github.com/shakyShane/browser-sync/wiki/Working-with-a-Config-File)
 
 ###Screencasts ( < 3 min each )
+
++ Grunt Jekyll
+
 1. [Browser-Sync + Jekyll + SASS Part: 1 - Example](http://quick.as/3v0sop3)
 2. [Browser-Sync + Jekyll + SASS Part: 2 - Configuration](http://quick.as/5g9c1jx)
 3. [Browser-Sync + Jekyll + SASS Part: 3 - Alternative Workflow](http://quick.as/ogrclvd)
+
++ CabinJS
+
+1. [Browser-Sync + CabinJS](http://quick.as/qq9cnl1)
 
 ##Important: Using browser-sync + grunt watch
 If you are using both of these, scroll down to the **watchTask** option below to see how to config them to be used together!
