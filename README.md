@@ -2,6 +2,8 @@
 
 > A grunt task for the [browser-sync](https://github.com/shakyShane/browser-sync) module.
 
+Follow [@browserSync](http://www.twitter.com/browserSync) for news & updates.
+
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
 
