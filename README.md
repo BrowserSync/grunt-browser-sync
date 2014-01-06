@@ -41,15 +41,19 @@ Here's a [full list of available options.](https://github.com/shakyShane/browser
 
 ###Screencasts ( < 3 min each )
 
-+ Grunt Jekyll
+
+Browser-sync + Jekyll + Sass
 
 1. [Browser-Sync + Jekyll + SASS Part: 1 - Example](http://quick.as/3v0sop3)
 2. [Browser-Sync + Jekyll + SASS Part: 2 - Configuration](http://quick.as/5g9c1jx)
 3. [Browser-Sync + Jekyll + SASS Part: 3 - Alternative Workflow](http://quick.as/ogrclvd)
 
-+ CabinJS
+Browser-sync + CabinJS
 
 1. [Browser-Sync + CabinJS](http://quick.as/qq9cnl1)
+
+
+Want any more? Something specific? ask me nicely [@shaneOsbourne](http://www.twitter.com/shaneOsbourne)
 
 ##Important: Using browser-sync + grunt watch
 If you are using both of these, scroll down to the **watchTask** option below to see how to config them to be used together!
