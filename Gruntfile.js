@@ -87,7 +87,8 @@ module.exports = function (grunt) {
                     ports: {
                         min: 2000,
                         max: 2100
-                    }
+                    },
+                    injectChanges: false
                 }
             },
             proxy: {

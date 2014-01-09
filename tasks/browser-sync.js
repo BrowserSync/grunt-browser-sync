@@ -14,24 +14,7 @@ module.exports = function (grunt) {
 
         var done = this.async();
 
-        var options = this.options({
-            debugInfo: true,
-            background: false,
-            reloadFileTypes: ["php", "html", "js", "erb"],
-            injectFileTypes: ["css", "png", "jpg", "svg", "gif"],
-            host: null,
-            ghostMode: {
-                clickedLinks: false,
-                clicks: true,
-                links: true,
-                forms: true,
-                scroll: true
-            },
-            server: false,
-            proxy: false,
-            open: true,
-            notify: true
-        });
+        var options = this.options();
 
         var patterns;
 
@@ -59,10 +42,10 @@ module.exports = function (grunt) {
 
         var browserSync  = require("browser-sync");
 
-        browserSync.setup.kickoff(patterns || [], options);
+        browserSync.init(patterns, options);
 
         //noinspection JSUnresolvedVariable
-        if (options.watchTask || options.background) {
+        if (options.watchTask || options.watchtask || options.background) {
             done(); // Allow Watch task to run after
         }
     });
