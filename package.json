@@ -1,7 +1,7 @@
 {
   "name": "grunt-browser-sync",
   "description": "Live CSS reload & Browser Syncing",
-  "version": "0.4.8",
+  "version": "0.4.9",
   "homepage": "https://github.com/shakyshane/grunt-browser-sync",
   "author": {
     "name": "Shane Osbourne"
@@ -26,9 +26,9 @@
   "scripts": {
     "test": "grunt jasmine_node"
   },
-  "dependencies": [
-    "browser-sync"
-  ],
+  "dependencies": {
+    "browser-sync": "0.4.12"
+  },
   "keywords": [
     "gruntplugin",
     "live reload",
