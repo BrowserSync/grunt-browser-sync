@@ -88,7 +88,8 @@ module.exports = function (grunt) {
                         min: 2000,
                         max: 2100
                     },
-                    injectChanges: false
+                    injectChanges: false,
+                    excludedFileTypes: ["ozz"]
                 }
             },
             proxy: {
