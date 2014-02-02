@@ -37,7 +37,7 @@ browser_sync: {
 }
 ```
 
-Here's a [full list of available options.](https://github.com/shakyShane/browser-sync/wiki/Working-with-a-Config-File)
+Here's a [full list of available options.](https://github.com/shakyShane/browser-sync/wiki/options)
 
 ###Screencasts ( < 3 min each )
 
@@ -338,12 +338,3 @@ If you've found Browser-sync useful and would like to contribute to its continue
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
-
-## Release History
-0.2.0 - rename project to grunt-browser-sync
-0.1.7 - Added 'open' for automatically opening browser when 'server' option is used.
-0.1.6 - Added Built-in server with middleware for injecting snippet
-0.1.4 - refined ghost-mode and added scroll
-0.1.3 - Added initial implentation of Ghost-mode (link)
-0.1.1 - Bug fixes release
-0.1.0 - initial release
