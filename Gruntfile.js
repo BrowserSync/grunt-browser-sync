@@ -76,9 +76,10 @@ module.exports = function (grunt) {
                 },
                 options: {
                     debugInfo: true,
+                    watchTask: true,
                     ghostMode: {
                         scroll: true,
-                        links: true,
+                        links: false,
                         forms: true
                     },
                     server: {
@@ -88,7 +89,7 @@ module.exports = function (grunt) {
                         min: 2000,
                         max: 2100
                     },
-                    injectChanges: false,
+                    injectChanges: true,
                     excludedFileTypes: ["ozz"]
                 }
             },
@@ -133,7 +134,8 @@ module.exports = function (grunt) {
 
     // Actually load this plugin's task(s).
     grunt.loadTasks('tasks');
-    grunt.loadNpmTasks('grunt-contrib-sass');
+//    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-concurrent');
