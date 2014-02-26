@@ -59,14 +59,14 @@ module.exports = function (grunt) {
             dev: {
                 tasks: [
                     'watch',
-                    'browser_sync'
+                    'browserSync'
                 ],
                 options: {
                     logConcurrentOutput: true
                 }
             }
         },
-        browser_sync: {
+        browserSync: {
             server: {
                 bsFiles: {
                     src : [
@@ -145,11 +145,11 @@ module.exports = function (grunt) {
     grunt.registerTask('test', ['karma', 'jasmine_node']);
 
     // By default, lint and run all tests.
-    grunt.registerTask('default', ["browser_sync"]);
+    grunt.registerTask('default', ["browserSync"]);
 
-    grunt.registerTask('dev-watch', ["browser_sync:server", "watch:sass"]);
-    grunt.registerTask('server', ["browser_sync:server", "watch:sass"]);
-    grunt.registerTask('proxy', ["browser_sync:proxy", "watch:sass"]);
+    grunt.registerTask('dev-watch', ["browserSync:server", "watch:sass"]);
+    grunt.registerTask('server', ["browserSync:server", "watch:sass"]);
+    grunt.registerTask('proxy', ["browserSync:proxy", "watch:sass"]);
 
-    grunt.registerTask('server-proxy', ["connect", "browser_sync:proxy"]);
+    grunt.registerTask('server-proxy', ["connect", "browserSync:proxy"]);
 };
