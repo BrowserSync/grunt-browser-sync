@@ -30,7 +30,7 @@ grunt.loadNpmTasks('grunt-browser-sync');
 Here's an example of the simplest configuration possible. This will give you a HTML snippet to paste into the footer of your website to enable browser-sync.
 
 ```
-browser_sync: {
+browserSync: {
     files: {
         src : 'assets/css/style.css'
     }
@@ -62,7 +62,7 @@ If you are using both of these, scroll down to the **watchTask** option below to
 You can use this plugin as a server too (for static HTML, JS & CSS). When using the Server option, the snippets are automatically injected for you.
 
 ```
-browser_sync: {
+browserSync: {
     dev: {
         bsFiles: {
             src : 'assets/css/style.css'
@@ -80,7 +80,7 @@ browser_sync: {
 If you already have a local server setup (with your vhosts etc), just tell browser-sync all about it & it will do the rest for you.
 
 ```
-browser_sync: {
+browserSync: {
     dev: {
         bsFiles: {
             src : 'assets/css/style.css'
@@ -99,7 +99,7 @@ Using the **proxy** option will give you an IP address that you can access from 
 The Browser-sync proxy will default to port 80, but if you know it's different for your project, then you can pass it as an option.
 
 ```
-browser_sync: {
+browserSync: {
     dev: {
         bsFiles: {
             src : 'assets/css/style.css'
@@ -122,7 +122,7 @@ You may be wondering why browser-sync accepts a `bsFiles` property (see the exam
 
 ##Run
 
-`grunt browser_sync`
+`grunt browserSync`
 
 When you've used one of the configs from above, run this command from the terminal and you'll be good to go (if you are using the built-in server). If you are not using the built in server or the proxy, (because your site is on PHP or something else), just grab the HTML snippet from the command line and paste it into your site just before the closing `</body` tag
 
@@ -132,7 +132,7 @@ When you've used one of the configs from above, run this command from the termin
 Here's another example config with options, each will be explained after.
 
 ```js
-browser_sync: {
+browserSync: {
     dev: {
         bsFiles: {
             src : 'assets/css/style.css'
@@ -149,7 +149,7 @@ browser_sync: {
 },
 ```
 ###watchTask (default: *false*)
-Browser Sync is not a replacement for regular `watch` tasks (such as compiling SASS, LESS etc), they are designed to be used together. If you intend to do this, set this option to true and be sure to call the `watch` task AFTER `browser_sync`. For example, to compile SASS and then inject the CSS into all open browsers (without a page refresh), your config for all three tasks might look something like this:
+Browser Sync is not a replacement for regular `watch` tasks (such as compiling SASS, LESS etc), they are designed to be used together. If you intend to do this, set this option to true and be sure to call the `watch` task AFTER `browserSync`. For example, to compile SASS and then inject the CSS into all open browsers (without a page refresh), your config for all three tasks might look something like this:
 
 
 ```js
@@ -169,7 +169,7 @@ module.exports = function (grunt) {
                 }
             }
         },
-        browser_sync: {
+        browserSync: {
             dev: {
                 bsFiles: {
                     src : 'assets/css/*.css'
@@ -187,7 +187,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-browser-sync');
 
     // create custom task-list
-    grunt.registerTask('default', ["browser_sync", "watch"]);
+    grunt.registerTask('default', ["browserSync", "watch"]);
 };
 ```
 
@@ -200,7 +200,7 @@ For example:
 
 ```js
 grunt.initConfig({
-    browser_sync: {
+    browserSync: {
         dev: {
             bsFiles: {
                 src : 'app/assets/css/*.css'
@@ -220,7 +220,7 @@ Browser-sync will detect up to 3 available ports to use within a fixed range. Yo
 
 ```js
 grunt.initConfig({
-    browser_sync: {
+    browserSync: {
         dev: {
             bsFiles: {
                 src : 'app/assets/css/*.css'
@@ -246,7 +246,7 @@ on `<a>` elements. It's designed to just make it easy to view multiple pages in 
 
 ```js
 grunt.initConfig({
-    browser_sync: {
+    browserSync: {
         dev: {
             bsFiles: {
                 src : 'app/assets/css/*.css'
@@ -270,7 +270,7 @@ Using the `server` option negates the need for the HTML snippet as it will be in
 
 ```js
 grunt.initConfig({
-    browser_sync: {
+    browserSync: {
         dev: {
             bsFiles: {
                 src : 'app/assets/css/*.css'
@@ -290,7 +290,7 @@ grunt.initConfig({
 If you are using the server feature & for some reason your index page is NOT 'index.html', you can specify which file to load instead.
 ```js
 grunt.initConfig({
-    browser_sync: {
+    browserSync: {
         dev: {
             bsFiles: {
                 src : 'app/assets/css/*.css'
@@ -312,7 +312,7 @@ Browser Sync injects CSS into all connected browsers without reloading the page 
 
 ```js
 grunt.initConfig({
-    browser_sync: {
+    browserSync: {
         dev: {
             bsFiles: {
                 src : [

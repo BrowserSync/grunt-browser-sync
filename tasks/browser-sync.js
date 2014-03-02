@@ -10,7 +10,7 @@
 
 module.exports = function (grunt) {
 
-    grunt.registerMultiTask("browser_sync", "Keep your browsers in sync", function () {
+    grunt.registerMultiTask("browserSync", "Keep your browsers in sync", function () {
 
         var done = this.async();
 
