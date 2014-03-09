@@ -76,7 +76,7 @@ browserSync: {
 },
 ```
 
-## + your own php/mamp/wamp/rails server (proxy)
+## + your own php/mamp/wamp/rails server (proxy) (version 0.7.0 required)
 If you already have a local server setup (with your vhosts etc), just tell browser-sync all about it & it will do the rest for you.
 
 ```
@@ -86,35 +86,13 @@ browserSync: {
             src : 'assets/css/style.css'
         },
         options: {
-            proxy: {
-                // Your existing vhost setup
-                host: "local.dev"
-            }
+            proxy: "local.dev"
         }
     }
 },
 ```
 Using the **proxy** option will give you an IP address that you can access from any device/computer on your network automagically.
 
-The Browser-sync proxy will default to port 80, but if you know it's different for your project, then you can pass it as an option.
-
-```
-browserSync: {
-    dev: {
-        bsFiles: {
-            src : 'assets/css/style.css'
-        },
-        options: {
-            proxy: {
-                // Your existing vhost setup
-                host: "local.dev",
-                // With a specific port
-                port: 8001
-            }
-        }
-    }
-},
-```
 
 ##bsFiles - explained (version > 0.4.3 required)
 
