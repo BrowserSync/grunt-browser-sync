@@ -75,7 +75,7 @@ module.exports = function (grunt) {
                     ]
                 },
                 options: {
-                    debugInfo: true,
+                    debugInfo: false,
                     watchTask: true,
                     ghostMode: {
                         scroll: true,
@@ -83,7 +83,17 @@ module.exports = function (grunt) {
                         forms: true
                     },
                     server: {
-                        baseDir: "test/fixtures"
+                        baseDir: ["test/fixtures", "test/fixtures2"],
+                        middleware: [
+                            function (req, res, next) {
+                                console.log("from middleware 1");
+                                next();
+                            },
+                            function (req, res, next) {
+                                console.log("from middleware 2");
+                                next();
+                            }
+                        ]
                     },
                     ports: {
                         min: 2000,
