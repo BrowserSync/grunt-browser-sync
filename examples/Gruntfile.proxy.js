@@ -30,6 +30,5 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks("grunt-browser-sync");
 
-    // Launch BrowserSync + watch task
     grunt.registerTask("default", ["browserSync"]);
 };
