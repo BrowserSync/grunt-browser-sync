@@ -1,7 +1,9 @@
 /**
- * First run:
- *
+ * Install:
  *      npm install grunt grunt-contrib-watch grunt-contrib-sass grunt-browser-sync
+ *
+ * Run:
+ *      grunt
  *
  * This example will watch SCSS files & compile them.
  * BrowserSync will then inject the changes.

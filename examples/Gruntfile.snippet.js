@@ -1,8 +1,10 @@
 /**
  *
- * First run:
- *
+ * Install:
  *      npm install grunt grunt-browser-sync
+ *
+ * Run:
+ *      grunt
  *
  * This example will output a snippet into the console,
  * Paste it into the body of your website.

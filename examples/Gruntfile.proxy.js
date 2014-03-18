@@ -1,8 +1,10 @@
 /**
  *
- * First run:
- *
+ * Install:
  *      npm install grunt grunt-browser-sync
+ *
+ * Run:
+ *      grunt
  *
  * This example will wrap your existing vhost in a proxy URL
  * Use the proxy URL to view your site.

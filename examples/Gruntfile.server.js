@@ -1,8 +1,10 @@
 /**
  *
- * First run:
- *
+ * Install:
  *      npm install grunt grunt-browser-sync
+ *
+ * Run:
+ *      grunt
  *
  * This example will serve HTML files from the `app` directory
  *
