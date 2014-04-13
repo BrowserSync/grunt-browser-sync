@@ -27,7 +27,7 @@
     "test": "grunt jasmine_node"
   },
   "dependencies": {
-    "browser-sync": "0.7.6"
+    "browser-sync": "0.7.7"
   },
   "keywords": [
     "gruntplugin",
