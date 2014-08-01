@@ -82,6 +82,7 @@ module.exports = function (grunt) {
                         links: false,
                         forms: true
                     },
+                    https: true,
                     server: {
                         baseDir: ["test/fixtures", "test/fixtures2"],
                         middleware: [
