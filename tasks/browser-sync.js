@@ -18,6 +18,8 @@ module.exports = function (grunt) {
 
         var patterns;
 
+        var keepAlive = this.flags.keepalive || options.keepalive;
+
         if (this.data && this.data.bsFiles && this.data.bsFiles.src) {
             patterns = this.data.bsFiles.src;
             if (typeof patterns === "string") {
@@ -45,8 +47,8 @@ module.exports = function (grunt) {
         browserSync.init(patterns, options);
 
         //noinspection JSUnresolvedVariable
-        if (options.watchTask || options.watchtask || options.background) {
-            done(); // Allow Watch task to run after
+        if (options.watchTask || options.watchtask || options.background || !keepAlive) {
+            done(); // Allow Watch or other task to run after
         }
     });
 };
