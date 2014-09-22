@@ -40,7 +40,7 @@ module.exports = function (grunt) {
             }
         }
 
-        var browserSync  = require("browser-sync");
+        var browserSync  = require("/Users/shakyshane/Sites/os-browser-sync");
 
         browserSync.init(patterns, options);
 
