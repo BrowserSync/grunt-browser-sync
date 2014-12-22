@@ -27,7 +27,7 @@
     "test": "grunt jasmine_node"
   },
   "dependencies": {
-    "browser-sync": "^1.5.3"
+    "browser-sync": "^1.8.2"
   },
   "keywords": [
     "gruntplugin",
@@ -37,10 +37,12 @@
     "auto refresh"
   ],
   "devDependencies": {
+    "chai": "^1.10.0",
     "grunt": "~0.4.2",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-sass": "~0.6.0",
+    "grunt-concurrent": "~0.4.2",
     "grunt-contrib-connect": "~0.5.0",
-    "grunt-concurrent": "~0.4.2"
+    "grunt-contrib-sass": "~0.6.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "mocha": "^2.0.1"
   }
 }
