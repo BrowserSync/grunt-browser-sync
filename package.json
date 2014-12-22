@@ -24,7 +24,7 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "grunt jasmine_node"
+    "test": "mocha"
   },
   "dependencies": {
     "browser-sync": "^1.8.2"

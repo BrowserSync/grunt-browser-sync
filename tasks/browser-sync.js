@@ -14,7 +14,9 @@ module.exports = function (grunt) {
 
         var done = this.async();
 
-        var options = this.options();
+        var options = this.options({
+            keepalive: true
+        });
 
         var patterns;
 
@@ -42,14 +44,13 @@ module.exports = function (grunt) {
 
         var browserSync  = require("browser-sync");
 
-        browserSync.init(patterns, options);
+        browserSync(patterns, options);
 
-        //noinspection JSUnresolvedVariable
-        if (options.watchTask || options.watchtask || options.background) {
-            
-            // Wait until browserSync fully initializes
+        if (options.watchTask || options.watchtask || options.background || !options.keepalive) {
+
+            // Wait until BrowserSync fully initializes
             browserSync.emitter.on('service:running', function() {
-                done(); // Allow Watch task to run after
+                done(); // Allow watch task to run after
             });
         }
     });

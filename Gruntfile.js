@@ -75,14 +75,8 @@ module.exports = function (grunt) {
                     ]
                 },
                 options: {
-                    debugInfo: false,
-                    watchTask: true,
-                    ghostMode: {
-                        scroll: true,
-                        links: false,
-                        forms: true
-                    },
-                    https: true,
+                    open: false,
+                    online: false,
                     server: {
                         baseDir: ["test/fixtures", "test/fixtures2"],
                         middleware: [
@@ -95,13 +89,7 @@ module.exports = function (grunt) {
                                 next();
                             }
                         ]
-                    },
-                    ports: {
-                        min: 2000,
-                        max: 2100
-                    },
-                    injectChanges: true,
-                    excludedFileTypes: ["ozz"]
+                    }
                 }
             },
             proxy: {
@@ -146,7 +134,7 @@ module.exports = function (grunt) {
     // Actually load this plugin's task(s).
     grunt.loadTasks('tasks');
 //    grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-sass');
+//    grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-concurrent');
