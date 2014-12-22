@@ -46,7 +46,11 @@ module.exports = function (grunt) {
 
         //noinspection JSUnresolvedVariable
         if (options.watchTask || options.watchtask || options.background) {
-            done(); // Allow Watch task to run after
+            
+            // Wait until browserSync fully initializes
+            browserSync.emitter.on('service:running', function() {
+                done(); // Allow Watch task to run after
+            });
         }
     });
 };
