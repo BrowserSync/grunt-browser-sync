@@ -44,14 +44,13 @@ module.exports = function (grunt) {
 
         var browserSync  = require("browser-sync");
 
-        browserSync(patterns, options);
-
-        if (options.watchTask || options.watchtask || options.background || !options.keepalive) {
-
-            // Wait until BrowserSync fully initializes
-            browserSync.emitter.on('service:running', function() {
-                done(); // Allow watch task to run after
-            });
-        }
+        browserSync(patterns, options, function () {
+            if (options.watchTask   ||
+                options.watchtask   ||
+                options.background  ||
+                !options.keepalive) {
+                done();
+            }
+        });
     });
 };
