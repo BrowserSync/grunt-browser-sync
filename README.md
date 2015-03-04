@@ -1,4 +1,4 @@
-# grunt-browser-sync [![NPM version](https://badge.fury.io/js/grunt-browser-sync.png)](http://badge.fury.io/js/grunt-browser-sync)
+# grunt-browser-sync [![NPM version](https://badge.fury.io/js/grunt-browser-sync.svg)](https://www.npmjs.org/package/grunt-browser-sync)
 
 > A grunt task for the [browser-sync](https://github.com/shakyShane/browser-sync) module.
 
