@@ -46,7 +46,7 @@ module.exports = function (grunt) {
 
         bs = require("browser-sync").create("Grunt");
 
-        bs.init(patterns, options, function (err, bs) {
+        bs.init(patterns || [], options, function (err, bs) {
             if (options.watchTask   ||
                 options.watchtask   ||
                 options.background  ||
