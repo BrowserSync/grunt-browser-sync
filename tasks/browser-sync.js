@@ -10,6 +10,8 @@
 
 module.exports = function (grunt) {
 
+    var instance, bs;
+
     grunt.registerMultiTask("browserSync", "Keep your browsers in sync", function () {
 
         var done = this.async();
@@ -42,15 +44,28 @@ module.exports = function (grunt) {
             }
         }
 
-        var browserSync  = require("browser-sync");
+        bs = require("browser-sync").create("Grunt");
 
-        browserSync(patterns, options, function () {
+        bs.init(patterns, options, function (err, bs) {
             if (options.watchTask   ||
                 options.watchtask   ||
                 options.background  ||
                 !options.keepalive) {
+                instance = bs;
                 done();
             }
         });
+    });
+
+    grunt.registerMultiTask("bsReload", function () {
+        if (bs && bs.active) {
+            bs.reload(this.data.reload);
+        }
+    });
+
+    grunt.registerMultiTask("bsNotify", function () {
+        if (bs && bs.active) {
+            bs.notify(this.data.notify);
+        }
     });
 };

@@ -42,6 +42,9 @@ module.exports = function (grunt) {
             }
         },
         watch: {
+            options: {
+                spawn: false
+            },
             server_tests: {
                 files: [
                     "test/new-server/**/*.js",
@@ -51,8 +54,7 @@ module.exports = function (grunt) {
             },
             sass: {
                 files: "test/fixtures/sass/*.scss",
-                tasks: ['sass'],
-                spawn: false
+                tasks: ['bsNotify:sassStart', 'sass', 'autoprefixer', 'bsReload:css']
             }
         },
         concurrent: {
@@ -66,17 +68,25 @@ module.exports = function (grunt) {
                 }
             }
         },
+        autoprefixer: {
+            sass: {
+                files: {
+                    "test/fixtures/css/style.css": "test/fixtures/css/style.css"
+                }
+            }
+        },
         browserSync: {
             server: {
                 bsFiles: {
                     src : [
-                        'test/fixtures/css/*.css',
+                        //'test/fixtures/css/*.css',
                         'test/fixtures/*.html'
                     ]
                 },
                 options: {
                     open: false,
                     online: false,
+                    background: true,
                     server: {
                         baseDir: ["test/fixtures", "test/fixtures2"],
                         middleware: [
@@ -113,6 +123,19 @@ module.exports = function (grunt) {
                 }
             }
         },
+        "bsReload": {
+            css: {
+                reload: "style.css"
+            },
+            all: {
+                reload: true
+            }
+        },
+        "bsNotify": {
+            sassStart: {
+                notify: "Please wait, compiling sass!"
+            }
+        },
         sass: {
             test: {
                 files: {
@@ -133,9 +156,10 @@ module.exports = function (grunt) {
 
     // Actually load this plugin's task(s).
     grunt.loadTasks('tasks');
-//    grunt.loadNpmTasks('grunt-contrib-sass');
-//    grunt.loadNpmTasks('grunt-sass');
+    grunt.loadNpmTasks('grunt-contrib-sass');
+    //grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-concurrent');
 
@@ -147,8 +171,8 @@ module.exports = function (grunt) {
     grunt.registerTask('default', ["browserSync"]);
 
     grunt.registerTask('dev-watch', ["browserSync:server", "watch:sass"]);
-    grunt.registerTask('server', ["browserSync:server", "watch:sass"]);
-    grunt.registerTask('proxy', ["browserSync:proxy", "watch:sass"]);
+    grunt.registerTask('server',    ["browserSync:server", "watch:sass"]);
+    grunt.registerTask('proxy',     ["browserSync:proxy",  "watch:sass"]);
 
     grunt.registerTask('server-proxy', ["connect", "browserSync:proxy"]);
 };
