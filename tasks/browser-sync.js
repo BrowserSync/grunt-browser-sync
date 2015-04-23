@@ -1,8 +1,8 @@
 /*
  * grunt-browser-sync
- * https://github.com/shakyshane/grunt-browser-sync
+ * https://github.com/BrowserSync/grunt-browser-sync
  *
- * Copyright (c) 2013 Shane Osbourne
+ * Copyright (c) 2015 Shane Osbourne
  * Licensed under the MIT license.
  */
 
