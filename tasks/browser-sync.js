@@ -10,7 +10,7 @@
 
 module.exports = function (grunt) {
 
-    var instance, bs;
+    var bs = require("browser-sync").create("Grunt");
 
     grunt.registerMultiTask("browserSync", "Keep your browsers in sync", function () {
 
@@ -44,14 +44,16 @@ module.exports = function (grunt) {
             }
         }
 
-        bs = require("browser-sync").create("Grunt");
+        bs.init(patterns || [], options, function (err) {
+            if (err) {
+                done(err);
+                return;
+            }
 
-        bs.init(patterns || [], options, function (err, bs) {
             if (options.watchTask   ||
                 options.watchtask   ||
                 options.background  ||
                 !options.keepalive) {
-                instance = bs;
                 done();
             }
         });
