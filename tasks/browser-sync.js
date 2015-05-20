@@ -47,6 +47,7 @@ module.exports = function (grunt) {
         bs.init(patterns || [], options, function (err) {
             if (err) {
                 done(err);
+                grunt.fail.fatal(err);
                 return;
             }
 
