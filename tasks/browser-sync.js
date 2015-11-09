@@ -67,7 +67,7 @@ module.exports = function (grunt) {
 
     grunt.registerMultiTask("bsNotify", function () {
         if (bs && bs.active) {
-            bs.notify(this.data.notify);
+            bs.notify(this.data.notify, this.data.timeout);
         }
     });
 };
