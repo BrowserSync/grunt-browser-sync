@@ -24,7 +24,9 @@ module.exports = function (grunt) {
                         "*.html"
                     ]
                 },
-                proxy: "localphpsite.dev"
+                options: {
+                    proxy: "localphpsite.dev"   
+                }
             }
         }
 
