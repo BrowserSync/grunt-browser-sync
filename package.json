@@ -27,7 +27,7 @@
     "test": "jshint tasks/*.js"
   },
   "dependencies": {
-    "browser-sync": "^2.6.4"
+    "browser-sync": "^2.14.0"
   },
   "keywords": [
     "gruntplugin",
