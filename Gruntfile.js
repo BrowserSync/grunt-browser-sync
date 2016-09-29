@@ -110,7 +110,6 @@ module.exports = function (grunt) {
                 },
                 options: {
                     watchTask: false,
-                    debugInfo: true,
                     ghostMode: {
                         scroll: true,
                         links: true,
