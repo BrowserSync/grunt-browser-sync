@@ -9,12 +9,12 @@ This plugin requires Grunt `~0.4.1`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins.
 
-##About
+## About
 
 For a full list of features, please visit [https://github.com/shakyShane/browser-sync](https://github.com/shakyShane/browser-sync)
 
 
-##Install
+## Install
 
 ```shell
 npm install grunt-browser-sync --save-dev
@@ -26,10 +26,10 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-browser-sync');
 ```
 
-##Usage
+## Usage
 Please see the [Grunt JS](http://www.browsersync.io/docs/grunt/) section of the Official [BrowserSync Documentation](http://www.browsersync.io/docs/).
 
-##Support
+## Support
 If you've found Browser-sync useful and would like to contribute to its continued development & support, please feel free to send a donation of any size - it would be greatly appreciated!
 
 [![Support via Gittip](https://rawgithub.com/chris---/Donation-Badges/master/gittip.jpeg)](https://www.gittip.com/shakyshane)
