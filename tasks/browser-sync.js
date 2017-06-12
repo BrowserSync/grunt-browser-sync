@@ -50,6 +50,10 @@ module.exports = function (grunt) {
                 return;
             }
 
+            if (typeof options.cb === 'function') {
+              options.cb(err, bs)
+            }
+
             if (options.watchTask   ||
                 options.watchtask   ||
                 options.background  ||
