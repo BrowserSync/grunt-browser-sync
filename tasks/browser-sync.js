@@ -51,7 +51,7 @@ module.exports = function (grunt) {
             }
 
             if (typeof options.cb === 'function') {
-              options.cb(err, bs)
+              options.cb(err, bs);
             }
 
             if (options.watchTask   ||
