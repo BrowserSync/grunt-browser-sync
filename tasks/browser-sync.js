@@ -45,6 +45,10 @@ module.exports = function (grunt) {
         }
 
         bs.init(patterns || [], options, function (err) {
+            if (typeof options.cb === 'function') {
+              options.cb(err, bs, done);
+            }
+
             if (err) {
                 done(err);
                 return;
