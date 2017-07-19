@@ -45,13 +45,13 @@ module.exports = function (grunt) {
         }
 
         bs.init(patterns || [], options, function (err) {
+            if (typeof options.cb === 'function') {
+              options.cb(err, bs);
+            }
+
             if (err) {
                 done(err);
                 return;
-            }
-
-            if (typeof options.cb === 'function') {
-              options.cb(err, bs);
             }
 
             if (options.watchTask   ||
